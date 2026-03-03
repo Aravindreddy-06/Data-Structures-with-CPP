@@ -1,0 +1,19 @@
+int maxArea(vector<int>& height) {
+    int n = height.size();
+    int i = 0;
+    int j = n - 1;
+    int most_water_area = 0;
+
+    while(i < j) { 
+        int length = min(height[i], height[j]);
+        int width = j - i;
+        most_water_area = max(most_water_area, length * width);
+
+        if(height[i] <= height[j]){
+            i++;
+        } else {
+            j--;
+        }
+    }
+    return most_water_area;
+}
